@@ -104,19 +104,8 @@ body {
     border: 5px solid #172236;
     background: #25334a;
     object-fit: cover;
-}
-
-.upload {
+    object-position: center;
     display: block;
-    margin-top: 10px;
-    text-align: center;
-    color: #e9bd72;
-    font-size: 12px;
-    cursor: pointer;
-}
-
-.upload input {
-    display: none;
 }
 
 .name-area {
@@ -319,32 +308,6 @@ input::placeholder {
     color: #7e8a9e;
 }
 
-.actions {
-    display: flex;
-    gap: 12px;
-    margin-top: 35px;
-    flex-wrap: wrap;
-}
-
-button {
-    padding: 14px 25px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 13px;
-}
-
-.save {
-    background: #e9bd72;
-    color: #101827;
-}
-
-.reset {
-    background: #26344a;
-    color: white;
-}
-
 .footer {
     text-align: center;
     padding: 30px;
@@ -364,7 +327,7 @@ button {
     }
 
     .nav-label {
-        display:none;
+        display: none;
     }
 
     .container {
@@ -419,14 +382,19 @@ button {
         <div class="profile-top">
 
             <div class="avatar-wrap">
-                <img id="avatar"
-                class="avatar"
-                src="https://placehold.co/300x300/25334a/e9bd72?text=CEO"
-                alt="CEO Profile">
+
+                <!-- CEO PHOTO FROM GITHUB REPOSITORY -->
+                <img
+                    id="avatar"
+                    class="avatar"
+                    src="./picture1.jpg"
+                    alt="Zulqarnain Ali - CEO"
+                >
 
             </div>
 
             <div class="name-area">
+
                 <h1 contenteditable="true" id="ceoName">
                     Zulqarnain Ali
                 </h1>
@@ -438,6 +406,7 @@ button {
                 <div class="badge">
                     ● EXECUTIVE LEADERSHIP
                 </div>
+
             </div>
 
         </div>
@@ -623,21 +592,25 @@ button {
 
             <div class="contact-box">
                 <label>EMAIL ADDRESS</label>
-                <input id="email" type="email"
-                value="Zulqarnainali6602@gmail.com"
-                placeholder="Enter CEO email address">
+                <input
+                    id="email"
+                    type="email"
+                    value="Zulqarnainali6602@gmail.com"
+                    placeholder="Enter CEO email address"
+                >
             </div>
 
             <div class="contact-box">
                 <label>PHONE NUMBER</label>
-                <input id="phone" type="tel"
-                value="0314-7671022"
-                placeholder="Enter CEO phone number">
+                <input
+                    id="phone"
+                    type="tel"
+                    value="0314-7671022"
+                    placeholder="Enter CEO phone number"
+                >
             </div>
 
         </div>
-
-        
 
     </div>
 
@@ -650,6 +623,9 @@ button {
 </main>
 
 <script>
+
+// Save and load editable profile text in this browser.
+// The CEO photo always loads from the GitHub repository.
 
 const fields = [
     "ceoName",
@@ -673,8 +649,6 @@ function saveProfile() {
             : el.innerText;
 
     });
-
-    data.photo = document.getElementById("avatar").src;
 
     localStorage.setItem(
         "hrwtCEOProfile",
@@ -707,33 +681,7 @@ function loadProfile() {
 
     });
 
-    if (data.photo) {
-        document.getElementById("avatar").src = data.photo;
-    }
-
 }
-
-document.getElementById("photoInput")
-.addEventListener("change", function(e) {
-
-    const file = e.target.files[0];
-
-    if (file) {
-
-        const reader = new FileReader();
-
-        reader.onload = function(event) {
-
-            document.getElementById("avatar").src =
-                event.target.result;
-
-        };
-
-        reader.readAsDataURL(file);
-
-    }
-
-});
 
 function resetProfile() {
 
